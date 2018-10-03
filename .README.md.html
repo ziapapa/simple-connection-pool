@@ -1,0 +1,758 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>C:\eclipse-workspace\simple-connection-pool\.README.md.html</title>
+
+
+<style type="text/css">
+body {
+	color: #333;
+	font: 13px/1.4 "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	background: transparent;
+	color: #4183c4;
+	text-decoration: none;
+}
+
+a:active,
+a:hover {
+	outline: 0 none;
+	text-decoration: underline;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+dfn {
+	font-style: italic;
+}
+h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+mark {
+	background: #ff0;
+	color: #000;
+}
+small {
+	font-size: 80%;
+}
+sub, sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+img {
+	border: 0 none;
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+figure {
+	margin: 1em 40px;
+}
+hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace,monospace;
+	font-size: 1em;
+}
+
+pre {
+	overflow: auto;
+	font: 12px Consolas,"Liberation Mono",Menlo,Courier,monospace;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.markdown-body {
+	padding: 30px;
+	font-size: 16px;
+	line-height: 1.6;
+	word-wrap: break-word;
+}
+
+.markdown-body>*:first-child {
+	margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+	margin-bottom: 0 !important;
+}
+
+.markdown-body .absent {
+	color: #c00;
+}
+
+.markdown-body .anchor {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	display: block;
+	padding-right: 6px;
+	padding-left: 30px;
+	margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+	outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+	position: relative;
+	margin-top: 1em;
+	margin-bottom: 16px;
+	font-weight: bold;
+	line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+	display: none;
+	color: #000;
+	vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+	padding-left: 8px;
+	margin-left: -30px;
+	line-height: 1;
+	text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+	display: inline-block;
+}
+
+.markdown-body h1 tt,
+.markdown-body h1 code,
+.markdown-body h2 tt,
+.markdown-body h2 code,
+.markdown-body h3 tt,
+.markdown-body h3 code,
+.markdown-body h4 tt,
+.markdown-body h4 code,
+.markdown-body h5 tt,
+.markdown-body h5 code,
+.markdown-body h6 tt,
+.markdown-body h6 code {
+	font-size: inherit;
+}
+
+.markdown-body h1 {
+	padding-bottom: 0.3em;
+	font-size: 2.25em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+	padding-bottom: 0.3em;
+	font-size: 1.75em;
+	line-height: 1.225;
+	border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+	font-size: 1.5em;
+	line-height: 1.43;
+}
+
+.markdown-body h4 {
+	font-size: 1.25em;
+}
+
+.markdown-body h5 {
+	font-size: 1em;
+}
+
+.markdown-body h6 {
+	font-size: 1em;
+	color: #777;
+}
+
+.markdown-body p,.markdown-body blockquote,
+.markdown-body ul,.markdown-body ol,
+.markdown-body dl,.markdown-body table,
+.markdown-body pre {
+	margin-top: 0;
+	margin-bottom: 16px;
+}
+
+.markdown-body hr {
+	height: 4px;
+	padding: 0;
+	margin: 16px 0;
+	background-color: #e7e7e7;
+	border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+	padding-left: 2em;
+}
+
+.markdown-body ul.no-list,
+.markdown-body ol.no-list {
+	padding: 0;
+	list-style-type: none;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.markdown-body li>p {
+	margin-top: 16px;
+}
+
+.markdown-body dl {
+	padding: 0;
+}
+
+.markdown-body dl dt {
+	padding: 0;
+	margin-top: 16px;
+	font-size: 1em;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.markdown-body dl dd {
+	padding: 0 16px;
+	margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+	padding: 0 15px;
+	color: #777;
+	border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+	margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+	margin-bottom: 0;
+}
+
+.markdown-body table {
+	display: block;
+	width: 100%;
+	overflow: auto;
+	word-break: normal;
+	word-break: keep-all;
+}
+
+.markdown-body table th {
+	font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+	padding: 6px 13px;
+	border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+	background-color: #fff;
+	border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+	background-color: #f8f8f8;
+}
+
+.markdown-body img {
+	max-width: 100%;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.markdown-body span.frame {
+	display: block;
+	overflow: hidden;
+}
+
+.markdown-body span.frame>span {
+	display: block;
+	float: left;
+	width: auto;
+	padding: 7px;
+	margin: 13px 0 0;
+	overflow: hidden;
+	border: 1px solid #ddd;
+}
+
+.markdown-body span.frame span img {
+	display: block;
+	float: left;
+}
+
+.markdown-body span.frame span span {
+	display: block;
+	padding: 5px 0 0;
+	clear: both;
+	color: #333;
+}
+
+.markdown-body span.align-center {
+	display: block;
+	overflow: hidden;
+	clear: both;
+}
+
+.markdown-body span.align-center>span {
+	display: block;
+	margin: 13px auto 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.markdown-body span.align-center span img {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.markdown-body span.align-right {
+	display: block;
+	overflow: hidden;
+	clear: both;
+}
+
+.markdown-body span.align-right>span {
+	display: block;
+	margin: 13px 0 0;
+	overflow: hidden;
+	text-align: right;
+}
+
+.markdown-body span.align-right span img {
+	margin: 0;
+	text-align: right;
+}
+
+.markdown-body span.float-left {
+	display: block;
+	float: left;
+	margin-right: 13px;
+	overflow: hidden;
+}
+
+.markdown-body span.float-left span {
+	margin: 13px 0 0;
+}
+
+.markdown-body span.float-right {
+	display: block;
+	float: right;
+	margin-left: 13px;
+	overflow: hidden;
+}
+
+.markdown-body span.float-right>span {
+	display: block;
+	margin: 13px auto 0;
+	overflow: hidden;
+	text-align: right;
+}
+
+.markdown-body code,.markdown-body tt {
+	padding: 0;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	margin: 0;
+	font-size: 85%;
+	background-color: rgba(0,0,0,0.04);
+	border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after,
+.markdown-body tt:before,
+.markdown-body tt:after {
+	letter-spacing: -0.2em;
+	content: "\00a0";
+}
+
+.markdown-body code br,
+.markdown-body tt br {
+	display: none;
+}
+
+.markdown-body del code {
+	text-decoration: inherit;
+}
+
+.markdown-body pre>code {
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	word-break: normal;
+	white-space: pre;
+	background: transparent;
+	border: 0;
+}
+
+.markdown-body .highlight {
+	margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+	padding: 16px;
+	overflow: auto;
+	font-size: 85%;
+	line-height: 1.45;
+	background-color: #f7f7f7;
+	border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+	margin-bottom: 0;
+	word-break: normal;
+}
+
+.markdown-body pre {
+	word-wrap: normal;
+}
+
+.markdown-body pre code,
+.markdown-body pre tt {
+	display: inline;
+	max-width: initial;
+	padding: 0;
+	margin: 0;
+	overflow: initial;
+	line-height: inherit;
+	word-wrap: normal;
+	background-color: transparent;
+	border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after,
+.markdown-body pre tt:before,
+.markdown-body pre tt:after {
+	content: normal;
+}
+
+.highlight .pl-coc,
+.highlight .pl-entl,
+.highlight .pl-entm,
+.highlight .pl-eoa,
+.highlight .pl-mai .pl-sf,
+.highlight .pl-mm,
+.highlight .pl-pdv,
+.highlight .pl-sc,
+.highlight .pl-som,
+.highlight .pl-sr,
+.highlight .pl-v,
+.highlight .pl-vpf {
+	color: #0086b3;
+}
+.highlight .pl-eoac,
+.highlight .pl-mdht,
+.highlight .pl-mi1,
+.highlight .pl-mri,
+.highlight .pl-va,
+.highlight .pl-vpu {
+	color: #008080;
+}
+.highlight .pl-c,
+.highlight .pl-pdc {
+	color: #b4b7b4;
+	font-style: italic;
+}
+.highlight .pl-k,
+.highlight .pl-ko,
+.highlight .pl-kolp,
+.highlight .pl-mc,
+.highlight .pl-mr,
+.highlight .pl-ms,
+.highlight .pl-s,
+.highlight .pl-sok,
+.highlight .pl-st {
+	color: #6e5494;
+}
+.highlight .pl-ef,
+.highlight .pl-enf,
+.highlight .pl-enm,
+.highlight .pl-entc,
+.highlight .pl-eoi,
+.highlight .pl-sf,
+.highlight .pl-smc {
+	color: #d12089;
+}
+.highlight .pl-ens,
+.highlight .pl-eoai,
+.highlight .pl-kos,
+.highlight .pl-mh .pl-pdh,
+.highlight .pl-mp,
+.highlight .pl-pde,
+.highlight .pl-stp {
+	color: #458;
+}
+.highlight .pl-enti {
+	color: #d12089;
+	font-weight: bold;
+}
+.highlight .pl-cce,
+.highlight .pl-enc,
+.highlight .pl-kou,
+.highlight .pl-mq {
+	color: #f93;
+}
+.highlight .pl-mp1 .pl-sf {
+	color: #458;
+	font-weight: bold;
+}
+.highlight .pl-cos,
+.highlight .pl-ent,
+.highlight .pl-md,
+.highlight .pl-mdhf,
+.highlight .pl-ml,
+.highlight .pl-pdc1,
+.highlight .pl-pds,
+.highlight .pl-s1,
+.highlight .pl-scp,
+.highlight .pl-sol {
+	color: #df5000;
+}
+.highlight .pl-c1,
+.highlight .pl-cn,
+.highlight .pl-pse,
+.highlight .pl-pse .pl-s2,
+.highlight .pl-vi {
+	color: #a31515;
+}
+.highlight .pl-mb,
+.highlight .pl-pdb {
+	color: #df5000;
+	font-weight: bold;
+}
+.highlight .pl-mi,
+.highlight .pl-pdi {
+	color: #6e5494;
+	font-style: italic;
+}
+.highlight .pl-ms1 {
+	background-color: #f5f5f5;
+}
+.highlight .pl-mdh,
+.highlight .pl-mdi {
+	font-weight: bold;
+}
+.highlight .pl-mdr {
+	color: #0086b3;
+	font-weight: bold;
+}
+.highlight .pl-s2 {
+	color: #333;
+}
+.highlight .pl-ii {
+	background-color: #df5000;
+	color: #fff;
+}
+.highlight .pl-ib {
+	background-color: #f93;
+}
+.highlight .pl-id {
+	background-color: #a31515;
+	color: #fff;
+}
+.highlight .pl-iu {
+	background-color: #b4b7b4;
+}
+.highlight .pl-mo {
+	color: #969896;
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h1> <a id="simple-connection-pool" class="anchor" href="#simple-connection-pool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>simple-connection-pool</h1> 
+<h3> <a id="feature" class="anchor" href="#feature" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Feature</h3> 
+<h4> <a id="1-json-파일-설정에-따라-여러-개의-커넥션-풀을-구성" class="anchor" href="#1-json-%ED%8C%8C%EC%9D%BC-%EC%84%A4%EC%A0%95%EC%97%90-%EB%94%B0%EB%9D%BC-%EC%97%AC%EB%9F%AC-%EA%B0%9C%EC%9D%98-%EC%BB%A4%EB%84%A5%EC%85%98-%ED%92%80%EC%9D%84-%EA%B5%AC%EC%84%B1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. JSON 파일 설정에 따라 여러 개의 커넥션 풀을 구성.</h4> 
+<blockquote> 
+ <ul> 
+  <li>poolName : 커넥션 풀을 구분하는 이름</li> 
+  <li>maxConnections : 최대 연결 커넥션 풀의 갯수</li> 
+  <li>minConnections : 최소 연결 커넥션 풀의 갯수</li> 
+  <li>increment : 최소에서 추가 커넥션 요청이 있을 경우 증가 갯수</li> 
+  <li>userName : db userName</li> 
+  <li>password : db password</li> 
+  <li>url : db url</li> 
+  <li>driverClassName : db driver</li> 
+  <li>connectionWaitTimeOut : 커넥션이 없을 경우 대기시간</li> 
+  <li>validationQuery : 유효성 체크 Query</li> 
+  <li>defaultPool : 디폴트가 true 일경우 커넥션 풀 이름 없이 호출 할 수 있음 (하나만 존재해야함)</li> 
+ </ul> 
+</blockquote> 
+<h5> <a id="11-예시-dbpooljson-" class="anchor" href="#11-%EC%98%88%EC%8B%9C-dbpooljson-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.1 예시( dbpool.json )</h5> 
+<pre><code>
+[
+    {
+        &quot;poolName&quot;: &quot;db1&quot;,
+        &quot;maxConnections&quot;: 10,
+        &quot;minConnections&quot;: 5,
+        &quot;increment&quot;: 1,
+        &quot;userName&quot;: &quot;admin&quot;,
+        &quot;password&quot;: &quot;abcd1234&quot;,
+        &quot;url&quot;: &quot;jdbc:mysql://localhost:3306/world?serverTimezone=UTC&amp;useSSL=false&amp;autoReconnect=true&amp;validationQuery=select 1&quot;,
+        &quot;driverClassName&quot;: &quot;com.mysql.cj.jdbc.Driver&quot;,
+        &quot;connectionWaitTimeOut&quot;: 1000,
+        &quot;validationQuery&quot;: &quot;select 1&quot;,
+        &quot;defaultPool&quot;: &quot;true&quot;
+    },
+    {
+        &quot;poolName&quot;: &quot;db2&quot;,
+        &quot;maxConnections&quot;: 10,
+        &quot;minConnections&quot;: 5,
+        &quot;increment&quot;: 1,
+        &quot;userName&quot;: &quot;admin&quot;,
+        &quot;password&quot;: &quot;abcd1234&quot;,
+        &quot;url&quot;: &quot;jdbc:mysql://localhost:3306/world?serverTimezone=UTC&amp;useSSL=false&amp;autoReconnect=true&amp;validationQuery=select 1&quot;,
+        &quot;driverClassName&quot;: &quot;com.mysql.cj.jdbc.Driver&quot;,
+        &quot;connectionWaitTimeOut&quot;: 1000,
+        &quot;validationQuery&quot;: &quot;select 1&quot;,
+        &quot;defaultPool&quot;: &quot;false&quot;
+    }
+]
+
+</code></pre> 
+<h4> <a id="2-사용된-커넥션은-반환되어-재사용-됨" class="anchor" href="#2-%EC%82%AC%EC%9A%A9%EB%90%9C-%EC%BB%A4%EB%84%A5%EC%85%98%EC%9D%80-%EB%B0%98%ED%99%98%EB%90%98%EC%96%B4-%EC%9E%AC%EC%82%AC%EC%9A%A9-%EB%90%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. 사용된 커넥션은 반환되어 재사용 됨.</h4> 
+<h4> <a id="3-pool의-리소스를-모니터링-할-있음" class="anchor" href="#3-pool%EC%9D%98-%EB%A6%AC%EC%86%8C%EC%8A%A4%EB%A5%BC-%EB%AA%A8%EB%8B%88%ED%84%B0%EB%A7%81-%ED%95%A0-%EC%9E%88%EC%9D%8C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Pool의 리소스를 모니터링 할 있음.</h4> 
+<h4> <a id="4-사용자-이벤트로-신규-리소스-할당을-중지-가능함" class="anchor" href="#4-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%B4%EB%B2%A4%ED%8A%B8%EB%A1%9C-%EC%8B%A0%EA%B7%9C-%EB%A6%AC%EC%86%8C%EC%8A%A4-%ED%95%A0%EB%8B%B9%EC%9D%84-%EC%A4%91%EC%A7%80-%EA%B0%80%EB%8A%A5%ED%95%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. 사용자 이벤트로 신규 리소스 할당을 중지 가능함.</h4> 
+<h4> <a id="5-멀티스레드-환경에서도-pool-동기화됨" class="anchor" href="#5-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C%EB%8F%84-pool-%EB%8F%99%EA%B8%B0%ED%99%94%EB%90%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. 멀티스레드 환경에서도 Pool 동기화됨.</h4> 
+<h4> <a id="6-minconnections-커넥션-수의-이상이-요청될-경우-increment-만큼씩-커넥션을-추가-할당함-maxconnections-까지" class="anchor" href="#6-minconnections-%EC%BB%A4%EB%84%A5%EC%85%98-%EC%88%98%EC%9D%98-%EC%9D%B4%EC%83%81%EC%9D%B4-%EC%9A%94%EC%B2%AD%EB%90%A0-%EA%B2%BD%EC%9A%B0-increment-%EB%A7%8C%ED%81%BC%EC%94%A9-%EC%BB%A4%EB%84%A5%EC%85%98%EC%9D%84-%EC%B6%94%EA%B0%80-%ED%95%A0%EB%8B%B9%ED%95%A8-maxconnections-%EA%B9%8C%EC%A7%80" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. minConnections 커넥션 수의 이상이 요청될 경우 increment 만큼씩 커넥션을 추가 할당함. (maxConnections 까지)</h4> 
+<h4> <a id="7-maxconnections을-초과하는-요청이-있을-경우-connectionwaittimeout-만큼-대기후-커넥션을-할당-또는-timeoutexception-을-발생-시킴" class="anchor" href="#7-maxconnections%EC%9D%84-%EC%B4%88%EA%B3%BC%ED%95%98%EB%8A%94-%EC%9A%94%EC%B2%AD%EC%9D%B4-%EC%9E%88%EC%9D%84-%EA%B2%BD%EC%9A%B0-connectionwaittimeout-%EB%A7%8C%ED%81%BC-%EB%8C%80%EA%B8%B0%ED%9B%84-%EC%BB%A4%EB%84%A5%EC%85%98%EC%9D%84-%ED%95%A0%EB%8B%B9-%EB%98%90%EB%8A%94-timeoutexception-%EC%9D%84-%EB%B0%9C%EC%83%9D-%EC%8B%9C%ED%82%B4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. maxConnections을 초과하는 요청이 있을 경우 connectionWaitTimeOut 만큼 대기후 커넥션을 할당 또는 TimeOutException 을 발생 시킴.</h4> 
+<h4> <a id="8-커넥션을-얻을-때-마다-유효성-체크를-하고-오류가-발생할-경우-retry-3회까지-진행함" class="anchor" href="#8-%EC%BB%A4%EB%84%A5%EC%85%98%EC%9D%84-%EC%96%BB%EC%9D%84-%EB%95%8C-%EB%A7%88%EB%8B%A4-%EC%9C%A0%ED%9A%A8%EC%84%B1-%EC%B2%B4%ED%81%AC%EB%A5%BC-%ED%95%98%EA%B3%A0-%EC%98%A4%EB%A5%98%EA%B0%80-%EB%B0%9C%EC%83%9D%ED%95%A0-%EA%B2%BD%EC%9A%B0-retry-3%ED%9A%8C%EA%B9%8C%EC%A7%80-%EC%A7%84%ED%96%89%ED%95%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>8. 커넥션을 얻을 때 마다 유효성 체크를 하고 오류가 발생할 경우 Retry 3회까지 진행함.</h4> 
+<h4> <a id="9-logging은-logback-을-사용하였음" class="anchor" href="#9-logging%EC%9D%80-logback-%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EC%98%80%EC%9D%8C" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9. logging은 logback 을 사용하였음.</h4> 
+<h4> <a id="10-junit를-사용하여-단위-테스트-작성함" class="anchor" href="#10-junit%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-%EB%8B%A8%EC%9C%84-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%A8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10. JUnit를 사용하여 단위 테스트 작성함.</h4> 
+<hr /> 
+<h3> <a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h3> 
+<ul> 
+ <li>Initialize as a json file</li> 
+</ul> 
+<pre><code>PoolFactory pf = new PoolFactory(&quot;dbpool.json&quot;);
+</code></pre> 
+<ul> 
+ <li>getConnectionPool</li> 
+</ul> 
+<pre><code>ConnectionPool cp = PoolFactory.getPool();
+or
+ConnectionPool cp = PoolFactory.getPool(&quot;poolName&quot;);
+</code></pre> 
+<ul> 
+ <li>getConnection</li> 
+</ul> 
+<pre><code>Connection conn = cp.getConnection();
+or 
+Connection conn = PoolFactory.getPool().getConnection();
+</code></pre> 
+<ul> 
+ <li>Monitor</li> 
+</ul> 
+<pre><code>PoolMonitor cm = PoolFactory.getPoolMonitor();
+or
+PoolMonitor cm = PoolFactory.getPoolMonitor(&quot;poolName&quot;);
+
+cm.getCurrentPoolSize();
+cm.getFreeConnections();
+cm.getUseConnections();
+</code></pre> 
+<h2> <a id="test-code" class="anchor" href="#test-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test Code</h2> 
+<pre><code>
+PoolFactory pf = new PoolFactory(&quot;dbpool.json&quot;);
+
+ConnectionPool cp = PoolFactory.getPool();
+PoolMonitor cm = PoolFactory.getPoolMonitor();
+Connection conn = cp.getConnection();
+
+//monitor after getConnection 
+System.out.println(&quot;CurrentPoolSize : &quot; + cm.getCurrentPoolSize());
+System.out.println(&quot;FreeConnections : &quot; + cm.getFreeConnections());
+System.out.println(&quot;UseConnections : &quot; + cm.getUseConnections());
+
+Statement stmt = conn.createStatement();
+boolean bool = stmt.execute(cm.getConfigMonitor().getValidationQuery());
+System.out.println(&quot;execute : &quot; + bool);
+stmt.close();
+cp.returnConnection(conn);
+
+//monitor after returnConnection
+System.out.println(&quot;CurrentPoolSize : &quot; + cm.getCurrentPoolSize());
+System.out.println(&quot;FreeConnections : &quot; + cm.getFreeConnections());
+System.out.println(&quot;UseConnections : &quot; + cm.getUseConnections());
+</code></pre>
+</body>
+</html>

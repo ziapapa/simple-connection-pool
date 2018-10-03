@@ -1,0 +1,28 @@
+[
+    {
+        "poolName": "db1",
+        "maxConnections": 10,
+        "minConnections": 5,
+        "increment": 1,
+        "userName": "testA",
+        "password": "test1234",
+        "url": "jdbc:mysql://localhost:3306/world?serverTimezone=UTC&useSSL=false&autoReconnect=true&validationQuery=select 1",
+        "driverClassName": "com.mysql.cj.jdbc.Driver",
+        "connectionWaitTimeOut": 1000,
+        "validationQuery": "select 1",
+        "defaultPool": "true"
+    },
+    {
+        "poolName": "db2",
+        "maxConnections": 20,
+        "minConnections": 5,
+        "increment": 3,
+        "userName": "testB",
+        "password": "test1234",
+        "url": "jdbc:mysql://localhost:3306/world?serverTimezone=UTC&useSSL=false&autoReconnect=true&validationQuery=select 1",
+        "driverClassName": "com.mysql.cj.jdbc.Driver",
+        "connectionWaitTimeOut": 1000,
+        "validationQuery": "select 1",
+        "defaultPool": "false"
+    }
+]
